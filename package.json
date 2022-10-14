@@ -1,7 +1,8 @@
 {
-  "name": "viterts",
+  "name": "bravi-web",
   "private": true,
   "version": "0.1.0",
+  "author": "Breno Beierstedt",
   "scripts": {
     "dev": "vite --host",
     "build": "tsc && vite build",
