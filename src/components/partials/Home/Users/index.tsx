@@ -17,6 +17,7 @@ const UserList = () => {
   const dispatch = useAppDispatch();
 
   useEffect(() => {
+    console.log('asdasd');
     dispatch(fetchPeoples());
   }, [dispatch]);
 
@@ -27,7 +28,9 @@ const UserList = () => {
           <Button
             type="primary"
             icon={<UserAddOutlined />}
-            onClick={() => dispatch(openModal({ type: 'addPeopleModal' }))}
+            onClick={() => {
+              dispatch(openModal({ type: 'addPeopleModal' }));
+            }}
           >
             Adicionar Pessoa
           </Button>

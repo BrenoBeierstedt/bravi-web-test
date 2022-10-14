@@ -9,7 +9,10 @@ const AddContactCard = (props: any) => {
   const [form] = Form.useForm();
   const { Option } = Select;
   const person = useAppSelector(selectSingularPeople);
-
+  const handleChange = () => {
+    // Here, we invoke the callback with the new value
+    props.onChange();
+  };
   const onFinish = (values: any) => {
     dispatch(
       addContact({
@@ -22,14 +25,14 @@ const AddContactCard = (props: any) => {
     );
     message.success(`Contato adicionado com sucesso!`, 5);
     form.resetFields();
+    // @ts-ignore
+    dispatch(fetchContact(person!.id));
+    handleChange();
   };
   const onFinishFailed = () => {
     message.error(`Ocorreu um erro ao adicionar contato`, 5);
   };
-  const handleChange = () => {
-    // Here, we invoke the callback with the new value
-    props.onChange();
-  };
+
   return (
     <Card title="Cadastrar Contato">
       <Form
@@ -83,7 +86,13 @@ const AddContactCard = (props: any) => {
           </Col>
           <Col span={2}>
             <Form.Item>
-              <Button key="submit" type="primary" htmlType="submit" form="addContact">
+              <Button
+                key="submit"
+                type="primary"
+                htmlType="submit"
+                form="addContact"
+                style={{ marginLeft: 20 }}
+              >
                 Salvar
               </Button>
             </Form.Item>

@@ -7,6 +7,9 @@ const EditPeopleCard = (props: any) => {
   const dispatch = useAppDispatch();
   const person = useAppSelector(selectSingularPeople);
   const [form] = Form.useForm();
+  const handleChange = () => {
+    props.onChange();
+  };
   const onFinish = (values: any) => {
     dispatch(
       updatePeople({
@@ -17,12 +20,10 @@ const EditPeopleCard = (props: any) => {
     );
     message.success(`Pessoa alterada com sucesso!`, 5);
     form.resetFields();
+    handleChange();
   };
   const onFinishFailed = () => {
     message.error(`Ocorreu um erro ao registrar`, 5);
-  };
-  const handleChange = () => {
-    props.onChange();
   };
 
   return (
@@ -71,7 +72,13 @@ const EditPeopleCard = (props: any) => {
           </Col>
           <Col span={2}>
             <Form.Item>
-              <Button key="submit" type="primary" htmlType="submit" form="editPeople">
+              <Button
+                key="submit"
+                type="primary"
+                htmlType="submit"
+                form="editPeople"
+                style={{ marginLeft: 20 }}
+              >
                 Salvar
               </Button>
             </Form.Item>

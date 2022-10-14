@@ -2,7 +2,7 @@ import { Modal, Form, Input, Button, message } from 'antd';
 import React from 'react';
 import { useAppDispatch, useAppSelector } from '../../../../store/hooks';
 import { openModal, modaltype } from '../../../../store/slices/modal.slice';
-import { addPeople } from '../../../../store/slices/people.slice';
+import { addPeople, fetchPeoples } from '../../../../store/slices/people.slice';
 
 const AddPeopleModal = () => {
   const dispatch = useAppDispatch();
@@ -27,6 +27,8 @@ const AddPeopleModal = () => {
     );
     message.success(`Pessoa registrada com sucesso!`, 5);
     form.resetFields();
+
+    dispatch(fetchPeoples());
     dispatch(openModal(''));
   };
 
