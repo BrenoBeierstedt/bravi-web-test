@@ -24,6 +24,7 @@
     "@typescript-eslint/explicit-function-return-type": "off",
     "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx", ".ts", ".tsx"] }],
     "react/prop-types": "off",
+    "react/destructuring-assignment": "off",
     "react/button-has-type": "off",
     "import/no-extraneous-dependencies": [
       "error",
